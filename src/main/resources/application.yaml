@@ -1,0 +1,62 @@
+spring:
+  mail:
+    # Servidor SMTP
+    host: smtp.gmail.com
+    port: 587
+
+    # Credenciais
+    username:
+    password:  # Boa prática: usar variável de ambiente
+
+    # Protocolo
+    protocol: smtp
+    default-encoding: UTF-8
+
+    # Propriedades SMTP
+    properties:
+      mail:
+        smtp:
+          # Autenticação
+          auth: true
+
+          # STARTTLS (criptografia)
+          starttls:
+            enable: true
+            required: true
+
+          # SSL/TLS
+          ssl:
+            enable: false  # false porque usamos STARTTLS
+            protocols: TLSv1.2
+            trust: smtp.gmail.com
+
+          # Timeouts (em milissegundos)
+          connectiontimeout: 15000  # 15 segundos
+          timeout: 15000
+          writetimeout: 15000
+
+          # Outras configurações
+          socketFactory:
+            fallback: false
+
+        # Debug (remover em produção)
+        debug: false
+
+        # Transporte
+        transport:
+          protocol: smtp
+  thymeleaf:
+    enabled: true
+
+envio:
+  email:
+    remetente:
+    nomeRemetente:
+
+server:
+  port: 8082
+
+# Configurações adicionais recomendadas
+logging:
+  level:
+    org.springframework.mail: DEBUG  # Apenas para debug
